@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+import Frontpage from '../../components/Frontpage/Frontpage.astro'
+import Landing from '../../components/Frontpage/Landing.astro'
+import Further from '../../components/Frontpage/Further.astro'
+import Showcase from '../../components/Frontpage/Showcase.astro'
+---
+
+<Layout
+	lang="zh"
+	id="frontpage"
+	title="DA CHUAN · AUTO INTERIOR"
+	ogtitle="DA CHUAN · CAR AUTO PARTS"
+	desc="Focus On car interior upgrade."
+>
+	<Frontpage>
+		<Landing slot="landing">
+			<span slot="subtitle">
+				<br />国内首家和唯一同时拥有<br /> 222 和 223 两款内饰改装的企业</span
+			>
+			<span slot="download">了解更多</span>
+			<span slot="other_1"> 一体化 · 国际化 · 自主创新</span>
+			<span slot="other">专注服务汽车配件内饰产品升级</span>
+		</Landing>
+
+		<Showcase slot="showcase">
+			<span slot="title">W221 升级 W222 / W223</span>
+			<p slot="desc">
+				源头厂家无损改装 W221 升级 W222 或 W223 内饰 1:1 套装 原车座椅复刻<br />Linux
+				系统仪表 娱乐屏双系统 大川出品，价格优，品质好，性价比高<br />欢迎 <a
+					href="/#further">联系我们订制</a
+				>
+			</p>
+
+			<span slot="dynamic-title">W221 升级 W222 对比</span>
+			<p slot="dynamic-desc">
+				写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字
+				写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字
+				写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字
+				写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字
+			</p>
+
+			<span slot="custom-title">W221 升级 W223 对比</span>
+			<p slot="custom-desc">
+				写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字
+				写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字
+				写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字
+				写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字写一些产品介绍的文字
+			</p>
+
+			<span slot="more-title">更多高端车型老改新</span>
+			<li slot="more-links">09-15 年宝马 F02 改 →</li>
+			<!-- <li slot="more-searchbar">09-15 年宝马 F02 改 → </li> -->
+			<li slot="more-fonts">路虎老款 改 →</li>
+			<li slot="more-langs">奇瑞 QQ 改 →</li>
+			<li slot="more-darkmode">2024 年 G70 宝马 7 系</li>
+			<!-- <li slot="more-notes">2024 年 G70 宝马 7 系</li> -->
+			<li slot="more-quotes">2024 路虎</li>
+			<li slot="more-css">法拉利</li>
+		</Showcase>
+
+		<Further slot="further">
+			<span slot="title">联系我们</span>
+
+			<span slot="contact-title">预约产品体验</span>
+			<span slot="contact-desc"> 一些可上门提供体验的展示 </span>
+			<span slot="contact-button">立即预约</span>
+
+			<span slot="docs-title">商务合作</span>
+			<span slot="docs-desc"> 商务联系方式，联系我们订制 </span>
+			<span slot="docs-button">联系销售团队</span>
+
+			<span slot="repo-title">售后服务</span>
+			<span slot="repo-desc">
+				使用大川售后系统：<br />
+				1、查找解决方案<br />
+				2、提交售后问题<br />
+				3、人工服务
+			</span>
+			<span slot="repo-button">进入售后系统</span>
+		</Further>
+
+		<h2 slot="open-title">走向国际化，大川跨境电商</h2>
+		<p slot="open-text">
+			了解更多详细产品详情，请前往大川国际网站：<a href="https://www.dcautointerior.com"
+				>www.dcautointerior.com</a
+			>
+		</p>
+	</Frontpage>
+</Layout>
+
+<style>
+	a:link {
+		color: orange;
+	}
+	a:hover {
+		color: green;
+	}
+	a {
+		color: blue;
+		text-decoration: none;
+	}
+	a:visited {
+		color: orange;
+	}
+	a:hover {
+		color: green;
+	}
+	a:active {
+		color: green;
+	}
+</style>

@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Frontpage from '../components/Frontpage/Frontpage.astro'
+import Landing from '../components/Frontpage/Landing.astro'
+import Further from '../components/Frontpage/Further.astro'
+import Showcase from '../components/Frontpage/Showcase.astro'
+---
+
+<Layout
+	lang="en"
+	id="frontpage"
+	title="DA CHUAN · AUTO INTERIOR"
+	ogtitle="DA CHUAN · CAR AUTO PARTS"
+	desc="Focus On car interior upgrade."
+>
+	<Frontpage>
+		<Landing slot="landing">
+			<span slot="subtitle">Focus on Car Interior Upgrade</span>
+			<span slot="download">SEE MORE</span>
+			<span slot="other_1"> One-stop Innovation International</span>
+			<span slot="other">Focus On Car Interior Upgrade Service</span>
+		</Landing>
+
+		<Showcase slot="showcase">
+			<span slot="title">W221 Upgrade W222 / W223</span>
+			<p slot="desc">
+				Original Manufacturer with Non-Destructive Modification for " W221 Upgrade W222 OR
+				W223 " Interior 1:1 Set <br /> OEM Seat Replica， Linux Car Gauges <br />Double
+				System for Infotainment Display <br /> Made by Da-Chuan and offer Competitive prices,
+				good quality, high cost-performance ratio. <br /><a href="/#further"
+					>Please Contact us to Order Your Upgrade！</a
+				>
+			</p>
+
+			<span slot="dynamic-title">W221 Upgrade W222 Appreciate</span>
+			<p slot="dynamic-desc">
+				Some english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction
+			</p>
+
+			<span slot="custom-title">W221 Upgrade W223 Appreciate</span>
+			<p slot="custom-desc">
+				Some english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction Some
+				english introduction Some english introduction Some english introduction
+			</p>
+
+			<span slot="more-title">更多高端车型老改新</span>
+			<li slot="more-links">09-15 年宝马 F02 改 →</li>
+			<!-- <li slot="more-searchbar">09-15 年宝马 F02 改 → </li> -->
+			<li slot="more-fonts">路虎老款 改 →</li>
+			<li slot="more-langs">奇瑞 QQ 改 →</li>
+			<li slot="more-darkmode">2024 年 G70 宝马 7 系</li>
+			<!-- <li slot="more-notes">2024 年 G70 宝马 7 系</li> -->
+			<li slot="more-quotes">2024 路虎</li>
+			<li slot="more-css">法拉利</li>
+		</Showcase>
+
+		<!-- <h2 slot="open-title">Free, open source and privacy focused</h2>
+		<p slot="open-text">
+			Bonjourr is made by two independent developpers who love things well made and actually
+			think privacy is important. You can use Bonjourr straight away, without having to create
+			or log into any account because we do not collect any data.
+		</p> -->
+
+		<Further slot="further">
+			<span slot="title">Contact Us</span>
+
+			<span slot="contact-title">Product Experience Reservation</span>
+			<span slot="contact-desc"> 一些内容待补充 </span>
+			<span slot="contact-button">Reserve Now</span>
+
+			<span slot="docs-title">Business Cooperation</span>
+			<span slot="docs-desc"> 商务联系方式 </span>
+			<span slot="docs-button">Contact Sales Team</span>
+
+			<span slot="repo-title">After Sales Service</span>
+			<span slot="repo-desc">
+				DACHUAN ASS System：<br />
+				1、Search the Solutions<br />
+				2、Submit Post-Sale Issues<br />
+				3、Customer Service
+			</span>
+			<span slot="repo-button">Enter System</span>
+		</Further>
+
+		<h2 slot="open-title">Be International，E-commerce</h2>
+		<p slot="open-text">
+			Learn More Details，Go to website：<a href="https://www.dcautointerior.com"
+				>www.dcautointerior.com</a
+			>
+		</p>
+	</Frontpage>
+</Layout>
+
+<style>
+	a:link {
+		color: orange;
+	}
+	a:hover {
+		color: green;
+	}
+	a {
+		color: blue;
+		text-decoration: none;
+	}
+	a:visited {
+		color: orange;
+	}
+	a:hover {
+		color: green;
+	}
+	a:active {
+		color: green;
+	}
+</style>

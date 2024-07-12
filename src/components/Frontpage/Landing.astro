@@ -1,0 +1,217 @@
+---
+import Illustration from '../../assets/videos/car.mp4'
+import Link from '../Link.astro'
+const isChinese = Astro.url.pathname.startsWith('/zh')
+
+const en = { CompanyName: 'DA CHUAN', CompanySecondary: 'Auto Parts' }
+const zh = { CompanyName: '大川汽配', CompanySecondary: '' }
+const trans = isChinese ? zh : en
+---
+
+<script>
+	const userAgentRules = {
+		edge: /EdgA?\/([0-9\.]+)/,
+		'chromium-webview': /(?!Chrom.*OPR)wv\).*Chrom(?:e|ium)\/([0-9\.]+)(:?\s|$)/,
+		chrome: /(?!Chrom.*OPR)Chrom(?:e|ium)\/([0-9\.]+)(:?\s|$)/,
+		firefox: /Firefox\/([0-9\.]+)(?:\s|$)/,
+		opera: /Opera\/([0-9\.]+)(?:\s|$)/,
+		android: /Android\s([0-9\.]+)/,
+		ios: /Version\/([0-9\._]+).*Mobile.*Safari.*/,
+		safari: /Version\/([0-9\._]+).*Safari/,
+	}
+
+	const entries = Object.entries(userAgentRules)
+	const match = entries.find(([_, regex]) => !!navigator.userAgent.match(regex))
+	const name = match?.[0]
+
+	const icon = {
+		firefox: '/browsers/firefox.svg',
+		chrome: '/browsers/chrome.svg',
+		edge: '/browsers/edge.svg',
+		safari: '/browsers/safari.svg',
+		ios: '/browsers/safari.svg',
+	}[name ?? '']
+
+	const link = {
+		firefox: 'https://www.baidu.com',
+		chrome: 'https://www.baidu.com',
+		edge: 'https://www.baidu.com',
+		safari: 'https://www.baidu.com',
+		ios: 'https://www.baidu.com',
+	}[name ?? '']
+
+	if (icon && link) {
+		document.getElementById('download-link')?.setAttribute('href', link)
+		document.getElementById('download-icon')?.setAttribute('src', icon)
+		document.getElementById('download-icon')?.setAttribute('style', 'visibility: visible')
+	} else {
+		document.getElementById('download-link')?.setAttribute('style', 'display: none')
+	}
+</script>
+
+<div class="wrapper">
+	<div class="left">
+		<div class="title">
+			<h1>{trans.CompanyName}<br />{trans.CompanySecondary}</h1>
+			<p>
+				<slot name="subtitle" />
+			</p>
+		</div>
+
+		<div class="container">
+			<Link id="download-link" href="#showcase" class="button">
+				<slot name="download" />
+			</Link>
+		</div>
+
+		<div class="title-middle_1">
+			<i><slot name="other_1" /></i>
+		</div>
+
+		<div class="title-middle">
+			<i><slot name="other" /></i>
+		</div>
+	</div>
+
+	<picture id="illustration">
+		<video controls muted autoplay="false" transition:persist>
+			<source src={Illustration} type="video/mp4" />
+		</video>
+		<!--
+		<Image
+			src={Illustration}
+			densities={[2]}
+			loading="eager"
+			format="webp"
+			alt="Bonjourr screenshot"
+		/> -->
+	</picture>
+</div>
+
+<style>
+	h1,
+	p {
+		margin: 0;
+	}
+
+	#download-icon {
+		visibility: hidden;
+	}
+
+	#download-link,
+	#online-link {
+		margin-top: 0.5em;
+		transition: none;
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+	}
+
+	.wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8vw;
+	}
+
+	.title {
+		font-size: 2em;
+		margin-bottom: 1.25em;
+	}
+
+	.title-middle_1 {
+		margin-top: 1.8em;
+		font-size: 1.5em;
+	}
+
+	.title-middle {
+		margin-top: 0.5em;
+		font-size: 1.5em;
+	}
+
+	#illustration {
+		/* image-rendering: optimizeSpeed; */
+		/* background-size: cover;
+		color: transparent;
+		border-radius: 8px;
+		overflow: hidden; */
+		width: 600px;
+		height: 400px;
+		/* background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAIAAAAiZtkUAAAAV0lEQVQI1wFMALP/AaKeoAT///P4+BMfI/Pt6/77+AMQ8fQmBfDIDyPz2NQD5NqZmKoEPyMUzNPb8sDaLRwFHRUBVSkJA93tAPP1/QD07RD88vb48xIB9XJlKiKWKcJVAAAAAElFTkSuQmCC'); */
+	}
+
+	#illustration video {
+		width: 100%;
+		height: 100%;
+		/* image-rendering: optimizeQuality; */
+	}
+
+	.title h1 {
+		font-size: 2.5em;
+		font-weight: 350;
+	}
+
+	.link {
+		margin-top: 1.5em;
+	}
+
+	.link a {
+		opacity: 0.8;
+	}
+
+	.link a:hover {
+		opacity: 1;
+		text-decoration: underline;
+	}
+
+	a {
+		min-width: 200px;
+	}
+
+	.container {
+		display: flex;
+		gap: 1em;
+	}
+
+	@media only screen and (max-width: 1300px) {
+		.title {
+			font-size: 1.6em;
+		}
+
+		#illustration {
+			width: 420px;
+			height: 258px;
+		}
+	}
+
+	@media only screen and (max-width: 1000px) {
+		.wrapper {
+			flex-direction: column;
+			gap: 4em;
+		}
+
+		.left {
+			margin-right: 0;
+		}
+
+		.title {
+			margin-bottom: 1em;
+		}
+	}
+
+	@media only screen and (max-width: 580px) {
+		.title {
+			font-size: 1.4em;
+		}
+
+		#illustration {
+			display: none;
+		}
+	}
+
+	@media only screen and (max-width: 450px) {
+		.container {
+			align-items: center;
+			flex-direction: column;
+		}
+	}
+</style>

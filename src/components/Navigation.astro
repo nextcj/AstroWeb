@@ -1,0 +1,297 @@
+---
+import Link from './Link.astro'
+
+const isChinese = Astro.url.pathname.startsWith('/zh')
+const path = Astro.url.pathname
+
+const en = { Home: 'Home', Online: 'ECommerce', Docs: 'Docs', Contact: 'Contact Us' }
+const zh = { Home: '主页', Online: '跨境电商', Docs: '售后文档', Contact: '联系我们' }
+const trans = isChinese ? zh : en
+---
+
+<nav>
+	<div class="container">
+		<div class="links">
+			<Link href="/" id="homeLink">{trans.Home}</Link>
+			<a href="/#open">{trans.Online}</a>
+			<Link href="/#further">{trans.Contact}</Link>
+		</div>
+
+		<a href={isChinese ? path.substring(3) : '/zh' + path} class="language">
+			<span role="img" aria-label="">🌐 {isChinese ? '中文简体' : 'English'}</span>
+		</a>
+
+		<button open-button>
+			<svg
+				class="h-6 w-6"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 20 20"
+				fill="currentColor"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"
+					clip-rule="evenodd"></path>
+			</svg>
+		</button>
+	</div>
+
+	<div class="mobileContainer">
+		<div class="overlay"></div>
+
+		<aside>
+			<button close-button>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="currentColor"
+					class="h-6 w-6"
+				>
+					<path
+						fill-rule="evenodd"
+						d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+						clip-rule="evenodd"></path>
+				</svg>
+			</button>
+
+			<div class="links">
+				<Link href="/" id="homeLink">🏠 {trans.Home}</Link>
+				<a href="www.baidu.com">🌏 {trans.Online}</a>
+				<Link href="/docs">📰 {trans.Docs}</Link>
+				<Link href="/#further">☎️ {trans.Contact}</Link>
+			</div>
+
+			<hr />
+
+			<a href={isChinese ? path.substring(3) : '/zh' + path} class="language">
+				<span role="img" aria-label="">🌐 {isChinese ? '中文简体' : 'English'}</span>
+			</a>
+
+			<!-- <hr /> -->
+
+			<!-- <h2>Download for</h2>
+
+			<div class="downloadLink">
+				<a href="https://www.baidu.com" title="备用菜单">备用菜单 1</a>
+			</div>
+
+			<div class="downloadLink">
+				<a href="https://www.baidu.com" title="备用菜单">备用菜单 2</a>
+			</div>
+
+			<div class="downloadLink">
+				<a href="https://www.baidu.com" title="备用菜单">备用菜单 3</a>
+			</div>
+
+			<div class="downloadLink">
+				<a href="https://www.baidu.com" title="备用菜单">备用菜单 4</a>
+			</div> -->
+		</aside>
+	</div>
+</nav>
+
+<script>
+	function closeMobileNav() {
+		document.body?.classList.remove('showNav')
+	}
+
+	function openMobileNav() {
+		document.body?.classList.add('showNav')
+	}
+
+	document.querySelector('[open-button]')?.addEventListener('click', () => openMobileNav())
+
+	document.querySelector('.overlay')?.addEventListener('click', () => closeMobileNav())
+	document.querySelector('[close-button]')?.addEventListener('click', () => closeMobileNav())
+
+	document.addEventListener('keydown', (event) => {
+		const { key } = event
+		if (key === 'Escape') closeMobileNav()
+	})
+</script>
+
+<style>
+	aside {
+		position: fixed;
+		height: 100vh;
+		width: 300px;
+		right: -300px;
+		top: 0;
+		z-index: 101;
+		transition:
+			transform 0.3s,
+			box-shadow 0.3s;
+		padding: 3em;
+		background-color: #191919aa;
+		backdrop-filter: blur(4em);
+		-webkit-backdrop-filter: blur(4em);
+		border-left: 1px solid #fff4;
+		display: none;
+		overflow-y: scroll;
+		transform: translate(0%);
+		box-shadow: rgba(19, 24, 28, 0) 0px 39px 100px 150px;
+		will-change: transform;
+	}
+
+	aside .links {
+		flex-direction: column;
+		gap: 1.5em;
+		margin-top: 2em;
+	}
+
+	aside .links a:hover {
+		border-bottom: unset;
+	}
+
+	aside .language {
+		margin-top: 1.5em;
+	}
+
+	aside h2 {
+		font-size: 1em;
+		text-transform: uppercase;
+		opacity: 0.7;
+		padding-top: 0;
+		padding-bottom: 1em;
+	}
+
+	aside hr {
+		margin-block: 2em;
+		border: 0;
+		height: 0;
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+	}
+
+	.downloadLink {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+		margin-bottom: 1em;
+	}
+
+	.downloadLink img {
+		width: 25px;
+		margin: 0;
+	}
+
+	.overlay {
+		position: fixed;
+		background-color: black;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		z-index: 100;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.4s;
+	}
+
+	body.showNav {
+		/* overflow: hidden; */
+	}
+
+	body.showNav .overlay {
+		display: block;
+		pointer-events: all;
+	}
+
+	body.showNav aside {
+		transform: translate(-100%);
+		box-shadow: rgba(19, 24, 28, 0.5) 0px 39px 100px 150px;
+	}
+
+	button[open-button] {
+		display: none;
+	}
+
+	button[close-button] {
+		position: absolute;
+		right: 35px;
+		top: 35px;
+	}
+
+	button[open-button],
+	button[close-button] {
+		width: unset;
+		padding: unset;
+		background: unset;
+		border: unset;
+		backdrop-filter: unset;
+		-webkit-backdrop-filter: unset;
+		cursor: pointer;
+	}
+
+	button svg {
+		width: 2.5em;
+		filter: drop-shadow(1px 2px 3px rgb(0 0 0 / 0.4));
+	}
+
+	nav {
+		position: absolute;
+		width: 100%;
+		z-index: 3;
+	}
+
+	nav .container {
+		display: flex;
+		justify-content: space-between;
+		column-gap: 2em;
+		max-width: 1200px;
+		padding: 3em 4em;
+		margin: auto;
+	}
+
+	.language {
+		display: flex;
+		gap: 0.2em;
+	}
+
+	nav .links {
+		display: flex;
+		column-gap: 2em;
+	}
+
+	nav .container .links:hover a:hover {
+		opacity: 1;
+		border-color: white;
+		border-bottom: 1px solid white;
+	}
+
+	.container a {
+		position: relative;
+		font-weight: 500;
+		border-bottom: 2px solid transparent;
+	}
+
+	nav .links::-webkit-scrollbar {
+		display: none;
+	}
+
+	@media (prefers-color-scheme: light) {
+		body.showNav aside {
+			box-shadow: rgba(19, 24, 28, 0.2) 0px 39px 100px 100px;
+		}
+	}
+
+	@media only screen and (max-width: 700px) {
+		button[open-button] {
+			display: flex;
+		}
+
+		nav .container {
+			padding: 35px;
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		nav .container .links,
+		nav .container .language {
+			display: none;
+		}
+
+		aside {
+			display: block;
+		}
+	}
+</style>

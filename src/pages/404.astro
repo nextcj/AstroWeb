@@ -1,0 +1,69 @@
+---
+import Background from '../components/Background.astro'
+import Layout from '../layouts/Layout.astro'
+import Link from '../components/Link.astro'
+import Image from '../assets/backgrounds/sasha-set-GURzQwO8Li0.jpg'
+
+const isChinese = Astro.url.pathname.startsWith('/zh')
+
+const en = { Four: '4', Zero: '0', Ing: '4', BackHome: 'Back Home' }
+const zh = { Four: '开', Zero: '发', Ing: '中', BackHome: '返回首页' }
+const trans = isChinese ? zh : en
+---
+
+<script is:inline>
+	const oldURLs = ['/use-bonjourr', '/misc', '/profiles', '/styles']
+	let path = location.pathname
+
+	if (oldURLs.includes(path)) {
+		path = path.replace('misc', 'overview')
+		path = path.replace('use-bonjourr', 'platforms')
+		path = path.replace('/', '/docs/')
+
+		if (navigator.language === 'zh') {
+			path = path.replace('/docs/', '/zh/docs/')
+		}
+
+		location.assign(path)
+	}
+</script>
+
+<Layout title="404! · DACHUAN Startpage" id="404" lang={trans}>
+	<Background src={Image} blur="2" brightness=".8" width="300" />
+
+	<div class="wrapper">
+		<h1>
+			<span> {trans.Four}</span>
+			<span>{trans.Zero}</span>
+			<span>{trans.Ing}</span>
+		</h1>
+		<Link href="/" class="button"> {trans.BackHome} </Link>
+	</div>
+</Layout>
+
+<style>
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-height: calc(100vh - 140px);
+	}
+
+	h1 {
+		display: inline-flex; /* removes whitespaces nodes on firefox */
+		margin-top: 0;
+		font-size: 10em;
+		text-shadow: 0.07em 0.07em #fff3;
+		letter-spacing: 0;
+		cursor: default;
+	}
+
+	h1 span {
+		transition: transform 0.15s;
+	}
+
+	h1 span:hover {
+		transform: scale(0.8);
+	}
+</style>

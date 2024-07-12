@@ -1,0 +1,187 @@
+---
+import { Picture } from 'astro:assets'
+import DynamicImage from '../../assets/illustrations/dynamic.jpg'
+import CustomiseImage from '../../assets/illustrations/customise.jpg'
+---
+
+<div id="intro">
+	<h2><slot name="title" /></h2>
+	<slot name="desc" />
+</div>
+
+<div id="dynamic" class="image-row">
+	<div class="left">
+		<Picture
+			src={DynamicImage}
+			formats={['webp', 'avif']}
+			densities={[2]}
+			width="560"
+			height="372"
+			alt="DA CHUAN HOME PAGE"
+		/>
+	</div>
+
+	<div class="right">
+		<h3><slot name="dynamic-title" /></h3>
+		<hr />
+		<slot name="dynamic-desc" />
+	</div>
+</div>
+
+<div id="custom" class="image-row">
+	<div class="left">
+		<h3><slot name="custom-title" /></h3>
+		<hr />
+		<slot name="custom-desc" />
+	</div>
+
+	<div class="right">
+		<Picture
+			src={CustomiseImage}
+			formats={['webp', 'avif']}
+			width="560"
+			height="345"
+			alt="DA CHUAN dynamic backgrounds screenshot"
+		/>
+	</div>
+</div>
+
+<div id="more">
+	<h3><slot name="more-title" /></h3>
+
+	<div class="listContainer">
+		<div class="left">
+			<ul>
+				<slot name="more-links" />
+				<slot name="more-searchbar" />
+				<slot name="more-fonts" />
+				<slot name="more-langs" />
+			</ul>
+		</div>
+		<div class="right">
+			<ul>
+				<slot name="more-darkmode" />
+				<slot name="more-notes" />
+				<slot name="more-quotes" />
+				<slot name="more-css" />
+			</ul>
+		</div>
+	</div>
+</div>
+
+<style>
+	#intro {
+		max-width: 600px;
+		margin: auto;
+		text-align: center;
+	}
+
+	img {
+		object-fit: contain;
+	}
+
+	h3 {
+		font-size: 1.6em;
+		font-weight: 500;
+		margin: 0;
+	}
+
+	hr {
+		display: block;
+		border: unset;
+		border-bottom: 2px solid white;
+		width: 80px;
+		margin: 1em 0;
+	}
+
+	.image-row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 4em;
+		margin: 6em 0;
+	}
+
+	#more h3 {
+		text-align: center;
+	}
+
+	#more ul {
+		list-style: none;
+		padding: unset;
+	}
+
+	.listContainer {
+		display: flex;
+		gap: 1em;
+		justify-content: center;
+		font-size: 1.2em;
+		line-height: 1.5em;
+		padding-bottom: 2em;
+	}
+
+	.listContainer .left {
+		text-align: right;
+	}
+
+	@media only screen and (max-width: 1100px) {
+		img {
+			width: 460px;
+		}
+
+		.image-row {
+			margin: 3em 0;
+		}
+	}
+
+	@media only screen and (max-width: 900px) {
+		img {
+			width: 360px;
+		}
+
+		.image-row {
+			margin: 0;
+		}
+
+		#intro {
+			margin-bottom: 3em;
+		}
+
+		#more {
+			margin-top: 3em;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		.image-row {
+			flex-wrap: wrap;
+			gap: 2em;
+		}
+
+		.image-row#custom {
+			flex-wrap: wrap-reverse;
+		}
+
+		img {
+			height: auto;
+			width: 100%;
+			padding: 0;
+			margin: auto;
+		}
+
+		.listContainer {
+			font-size: 1.2em;
+		}
+	}
+
+	@media only screen and (max-width: 500px) {
+		.listContainer {
+			font-size: 1em;
+		}
+
+		.image-row {
+			margin: 4em 0;
+			gap: 1em;
+		}
+	}
+</style>

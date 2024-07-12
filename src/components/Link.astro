@@ -1,0 +1,8 @@
+---
+const isFrench = Astro.url.pathname.startsWith('/zh')
+const href = (isFrench ? '/zh' : '') + Astro.props.href
+---
+
+<a href={href} {...Astro.props}>
+	<slot />
+</a>

@@ -1,0 +1,242 @@
+---
+import Layout from './Layout.astro'
+import DocsTitle from '../components/Docs/DocsTitle.astro'
+
+let { title, thumbnail, lang, frontmatter } = Astro.props
+
+if (!title && frontmatter) {
+	title = frontmatter.title
+}
+---
+
+<script is:inline>
+	window.addEventListener('DOMContentLoaded', function() {	
+		Object.values(document.querySelectorAll('h2, h3, h4, h5, h6'))
+			.filter(h => h.id)
+			.forEach(heading => {
+				heading.innerHTML += `<a href="#${heading.id}" class="perma" aria-label="permalink">🔗</a>`
+		})
+	})
+</script>
+
+<Layout title={`${title} · 大川文档`} lang={lang} id='docs'>
+
+	<main>
+		<DocsTitle title={title} thumbnail={thumbnail}>
+		</DocsTitle>
+		
+		<div class='content'>
+			<slot />
+		</div>
+	</main>
+</Layout>
+
+<style is:global>
+	#gradient-background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: -1;
+	}
+	
+	body {
+		background-color: #181818;
+	}
+
+	main {
+		min-height: calc(100vh - 470px);
+		line-height: 1.6em;
+	}
+
+	h1 {
+		font-size: 3em;
+		line-height: 2em;
+		text-align: center;
+	}
+
+
+
+	pre {
+		tab-size: 1.5em;
+		padding: 1.5em;
+		border-radius: 0.5em;
+		border: 1px solid #fff1;
+	}
+
+	article.profiles pre {
+		white-space: normal;
+	}
+
+	pre > code {
+		background-color: transparent;
+	}
+
+	.content {
+		max-width: 740px;
+		min-width: 360px;
+		width: 100%;
+		margin: auto;
+		padding: 0 2em 6em;
+	}
+
+	.content a {
+		color: #5ca5ff;
+	}
+
+	.content a:hover {
+		text-decoration: underline;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		position: relative;
+		margin: 0;
+		font-weight: 500;
+		padding: 1em 2rem .5em 0;
+		width: max-content;
+		max-width: 100%;
+	}
+
+	h1:hover .perma,
+	h2:hover .perma,
+	h3:hover .perma,
+	h4:hover .perma,
+	h5:hover .perma,
+	h6:hover .perma {
+		display: initial;
+		text-decoration: none;
+	}
+
+	.perma {
+		display: none;
+		position: absolute;
+		right: 0;
+		font-size: 1rem;
+	}
+
+	h2 {
+		padding-top: 1.5em;
+		font-size: 2.5em;
+	}
+
+	h3 {
+		font-size: 1.6em;
+	}
+
+	p,
+	ul,
+	code {
+		color: #e7e6ea;
+	}
+
+	code {
+		/* border: 1px solid #fff3; */
+		background-color: #fff3;
+		color: white;
+		border-radius: 2px;
+		padding: .1em .2em 0;
+		font-size: .9em;
+		word-break: break-word;
+	}
+
+	strong {
+		font-weight: 500;
+	}
+
+	img {
+		width: 100%;
+	}
+
+	video {
+		display: block;
+		width: 80%;
+		margin: auto;
+	}
+
+	img, video {
+		border-radius: 0.5em;
+		margin-top: .8em;
+	}
+
+	table {
+		width: 100%;
+		max-width: 800px;
+		border-collapse: collapse;
+		word-break: break-word;
+	}
+
+	th {
+		padding: 1em;
+		text-align: left;
+	}
+
+	td {
+		padding: .6em;
+		border: 1px solid #ccc;
+		max-width: 500px;
+	}
+
+	@media (prefers-color-scheme: light) {
+		body {
+			background-color: #f7f7f7;
+		}
+
+		.content p, .content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .content ul, .content code, .content table, .content {
+			color: #1c1c1c;
+		}
+
+		.content a {
+			color: #3187f2;
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		td {
+			border-color: #666;
+		}
+	}
+
+	@media only screen and (min-width: 500px) {
+		.content h2 {
+			line-height: 1em;
+		}
+	}
+
+	@media only screen and (max-width: 700px) {
+		.content {
+			padding: 0 2em 4em;
+		}
+
+		article {
+			flex-direction: column;
+		}
+
+		{
+			min-width: 100%;
+		}
+	}
+
+	@media only screen and (max-width: 500px) {
+		h1 {
+			font-size: 2em;
+		}
+
+		h2 {
+			font-size: 1.5em;
+		}
+
+		h3 {
+			font-size: 1.2em;
+		}
+
+		article {
+			padding-bottom: 4em;
+		}
+	}
+</style>

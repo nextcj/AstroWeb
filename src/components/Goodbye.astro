@@ -1,0 +1,173 @@
+---
+import Link from './Link.astro'
+import Background from './Background.astro'
+import BackgroundImage from '../assets/backgrounds/sasha-set-GURzQwO8Li0.jpg'
+---
+
+<script>
+	import { detect } from 'detect-browser'
+
+	window.addEventListener('load', function () {
+		const section = document.querySelector<HTMLElement>('section')
+		const form = document.querySelector<HTMLFormElement>('form')
+		const input = document.querySelector<HTMLInputElement>('#browser')
+		const browser = detect()
+
+		if (input && typeof browser === 'object') {
+			input.value = `${browser?.name} ${browser?.version} ${browser?.os}`
+		}
+
+		form?.addEventListener('submit', async (ev: SubmitEvent) => {
+			ev.preventDefault()
+
+			const response = await fetch('/submit', { method: 'POST', body: new FormData(form) })
+
+			if (response.status !== 200) {
+				console.log('sike')
+			}
+
+			section?.classList.add('submitted')
+		})
+	})
+</script>
+
+<Background src={BackgroundImage} blur="2" brightness=".8" width="300" />
+
+<section>
+	<div id="form-container">
+		<h2>
+			<slot name="title" />
+		</h2>
+		<p>
+			<slot name="desc" />
+		</p>
+
+		<form id="form" name="contact">
+			<input type="hidden" name="browser" id="browser" />
+
+			<label>
+				<slot name="label-message" />
+			</label>
+			<textarea id="message" name="message" required></textarea>
+
+			<button type="submit">
+				<slot name="submit" />
+			</button>
+		</form>
+	</div>
+
+	<div id="message-submitted">
+		<h2>
+			<slot name="sent" />
+		</h2>
+
+		<Link href="/" class="button">
+			<slot name="back" />
+		</Link>
+	</div>
+</section>
+
+<style>
+	section {
+		padding: 6em 2em 10em 2em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: calc(100vh - 140px);
+	}
+
+	section.submitted #form-container {
+		display: none;
+	}
+
+	section.submitted #message-submitted {
+		display: block;
+	}
+
+	#form-container {
+		margin-top: 5vh;
+		max-width: 550px;
+	}
+
+	h2 {
+		font-size: 2em;
+		text-align: left;
+		margin-bottom: 0.5em;
+	}
+
+	form {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	form > * {
+		width: 100%;
+	}
+
+	label {
+		font-weight: bolder;
+		margin: 1em 0 0 0;
+	}
+
+	input,
+	textarea,
+	button {
+		margin: 0.5em 0;
+		padding: 1em;
+		border: 1px solid #fff2;
+		border-radius: 10px;
+		font-family: inherit;
+		font-size: 1em;
+		font-weight: 300;
+		color: #fff;
+
+		background-color: #fff2;
+		backdrop-filter: blur(15px);
+		transition: background-color 0.1s;
+	}
+
+	input:focus,
+	textarea:focus,
+	button:focus {
+		background-color: #fff3;
+		outline: 3px solid #0072eecc;
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 150px;
+		padding: 1em;
+	}
+
+	button {
+		max-width: 300px;
+		margin-top: 2em;
+		color: white;
+		font-weight: bolder;
+		cursor: pointer;
+	}
+
+	#message-submitted {
+		display: none;
+		height: 40vh;
+	}
+
+	#message-submitted h2 {
+		margin: 2em 0;
+	}
+
+	#message-submitted a {
+		margin: auto;
+	}
+
+	@media only screen and (max-width: 500px) {
+		section {
+			padding-top: 8em;
+		}
+
+		h2 {
+			font-size: 2em;
+		}
+	}
+</style>
