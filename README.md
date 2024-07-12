@@ -1,3 +1,3 @@
-为公司开发的官网
+play web test
 
-npm install
+> npm install
