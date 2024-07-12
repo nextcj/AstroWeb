@@ -13,7 +13,7 @@ const trans = isChinese ? zh : en
 	<div class="container">
 		<div class="links">
 			<Link href="/" id="homeLink">{trans.Home}</Link>
-			<a href="/#open">{trans.Online}</a>
+			<Link href="/#open">{trans.Online}</Link>
 			<Link href="/#further">{trans.Contact}</Link>
 		</div>
 
@@ -56,7 +56,8 @@ const trans = isChinese ? zh : en
 
 			<div class="links">
 				<Link href="/" id="homeLink">🏠 {trans.Home}</Link>
-				<a href="/#open">🌏 {trans.Online}</a>
+				<Link href="/#open">🌏 {trans.Online}</Link>
+				<!-- <a href="/#open">🌏 {trans.Online}</a> -->
 				<!-- <Link href="/docs">📰 {trans.Docs}</Link> -->
 				<Link href="/#further">☎️ {trans.Contact}</Link>
 			</div>
