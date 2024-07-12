@@ -1,34 +1,9 @@
 ---
-let pathname = Astro.url.pathname
-pathname = pathname.replace('/zh', '')
-pathname = pathname.endsWith('/') ? pathname.slice(0, pathname.length - 1) : pathname
-
-const isChinese = Astro.url.pathname.startsWith('/zh')
-const home = isChinese ? '主页' : 'Home'
-const locale = isChinese ? '/zh' : ''
-
-// Todo: wrong href with deep paths
-const crumbs = pathname.split('/').map((path, i) => {
-	const href = `${locale}/${path}`
-	const text = i === 0 ? home : path
-	return [href, text]
-})
-
 const { title, thumbnail } = Astro.props
 ---
 
 <div style={`background-image: url('${thumbnail}')`}>
 	<h1>{title}</h1>
-
-	<!-- <ul>
-		{
-			crumbs.map(([href, text]) => (
-				<li>
-					<a href={href}>{text}</a>
-				</li>
-			))
-		}
-	</ul> -->
 </div>
 
 <style>

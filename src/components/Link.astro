@@ -1,6 +1,6 @@
 ---
-const isFrench = Astro.url.pathname.startsWith('/zh')
-const href = (isFrench ? '/zh' : '') + Astro.props.href
+const isChinese = Astro.url.pathname.startsWith('/zh')
+const href = (isChinese ? '/zh' : '') + Astro.props.href
 ---
 
 <a href={href} {...Astro.props}>

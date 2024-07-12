@@ -1,6 +1,8 @@
 ---
 import Link from '../Link.astro'
 import { telegram, github, docs } from '../../assets/icons/further'
+const isChinese = Astro.url.pathname.startsWith('/zh')
+const locale = isChinese ? '/zh' : ''
 ---
 
 <div class="container">
@@ -19,7 +21,7 @@ import { telegram, github, docs } from '../../assets/icons/further'
 			<slot name="contact-desc" />
 		</p>
 
-		<a href="/docs/1" class="button">
+		<a href={locale + '/docs/1'}  class="button">
 			<!-- <img width="64" src={telegram} class="icon" alt="" /> -->
 			<slot name="contact-button" />
 		</a>
@@ -34,7 +36,7 @@ import { telegram, github, docs } from '../../assets/icons/further'
 			<slot name="docs-desc" />
 		</p>
 
-		<Link href="/docs/1" class="button">
+		<Link href={locale + '/docs/1'}class="button">
 			<!-- <img width="64" src={docs} class="icon" alt="" /> -->
 			<slot name="docs-button" />
 		</Link>
@@ -47,7 +49,7 @@ import { telegram, github, docs } from '../../assets/icons/further'
 		<p>
 			<slot name="repo-desc" />
 		</p>
-		<a href="/docs" class="button">
+		<a href={locale + '/docs'} class="button">
 			<!-- <img width="64" src={github} class="icon" alt="" /> -->
 			<slot name="repo-button" />
 		</a>
