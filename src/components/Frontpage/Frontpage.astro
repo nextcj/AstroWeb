@@ -27,38 +27,20 @@ import OpenImage from '../../assets/backgrounds/matt-drenth-IZ0a3V1aSbc.jpg'
 	<Background src={OpenImage} blur=".7" brightness=".8" width="600" />
 
 	<div class="section-wrapper">
-		<slot name="open-title" />
-		<slot name="open-text" />
+		<slot name="global-title" />
+		<h4><slot name="global-text" /></h4>
 	</div>
 </section>
-
-<!-- <section id="donate">
-	<Background src={DonateImage} blur=".7" brightness=".8" width="600" />
-
-	<div class="section-wrapper">
-		<slot name="donate-title" />
-		<slot name="donate-text" />
-
-		<div class="buttons">
-			<a href="/" class="button">
-				<img width="64" src={kofi} class="icon" alt="" />
-				<slot name="donate-fiat" />
-			</a>
-
-			<a
-				href="/"
-				class="button"
-			>
-				<img width="64" src={btc} class="icon" alt="" />
-				<slot name="donate-crypto" />
-			</a>
-		</div>
-	</div>
-</section> -->
 
 <style>
 	h3 {
 		font-size: 1.5em;
+		font-weight: 500;
+		text-align: center;
+	}
+
+	h4 {
+		font-size: 1em;
 		font-weight: 500;
 		text-align: center;
 	}

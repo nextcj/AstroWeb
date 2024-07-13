@@ -9,7 +9,7 @@ const locale = isChinese ? '/zh' : ''
 	<div><h2><slot name="sub_title" /></h2></div>
 
 	<div>
-		<h3><slot name="docs-title" /></h3>	
+		<h3><slot name="docs-title" /></h3>
 		<p><slot name="docs-desc" /></p>
 		<Link href={locale + '/docs/1'} class="button"><slot name="contact_business" /></Link>
 	</div>
@@ -38,6 +38,10 @@ const locale = isChinese ? '/zh' : ''
 </div>
 
 <style>
+	a {
+		margin: auto;
+	}
+
 	.container {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(calc(50% - 3em), 35em));
