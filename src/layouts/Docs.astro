@@ -2,6 +2,7 @@
 import Layout from './Layout.astro'
 import DocsTitle from '../components/Docs/DocsTitle.astro'
 
+
 let { title, thumbnail, lang, frontmatter } = Astro.props
 
 if (!title && frontmatter) {
@@ -26,7 +27,7 @@ if (!title && frontmatter) {
 		</DocsTitle>
 		
 		<div class='content'>
-			<slot />
+				<slot />
 		</div>
 	</main>
 </Layout>
