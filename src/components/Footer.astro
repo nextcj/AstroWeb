@@ -4,23 +4,25 @@ import Link from './Link.astro'
 const isChinese = Astro.url.pathname.startsWith('/zh')
 
 const en = {
+	root: '',
 	email: 'Email',
 	WeChat: 'WeChat',
 	IT: 'DC IT Department',
 	Made: 'DA CHUAN ',
 	'Privacy policy': 'Privacy policy',
 	'Source code': 'Version 240713.1638',
-	'Contact us': 'Contact Our Sales Team',
+	'Contact us': 'Contact Our Team',
 	by: 'AUTO INTERIOR SERVICE Co., Ltd.',
 }
 const zh = {
+	root: '/zh',
 	email: '邮箱',
 	WeChat: '官方微信',
 	IT: '大川 IT 部',
 	Made: '大川广州汽车服务有限公司',
 	'Privacy policy': '隐私条款',
 	'Source code': '部署版本 240713.1638',
-	'Contact us': '联系我们的销售团队',
+	'Contact us': '联系我们',
 	by: '大川车业 | 大川汽配',
 }
 const trans = isChinese ? zh : en
@@ -59,11 +61,11 @@ const trans = isChinese ? zh : en
 
 		<div id="contact">
 			<p>
-				<a href="/wechat">{trans['WeChat']}</a> ·
-				<a href="hufei.dev@aliyun.com">{trans['email']}</a>
+				<a>{trans['WeChat']}</a> ·
+				<a>{trans['email']}</a>
 			</p>
 
-			<p><a href="/#further">{trans['Contact us']}</a></p>
+			<p><a href={trans['root'] + '/#further'}>{trans['Contact us']}</a></p>
 		</div>
 	</div>
 </footer>
