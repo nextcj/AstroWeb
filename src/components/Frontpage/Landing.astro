@@ -3,8 +3,8 @@ import Illustration from '../../assets/videos/car.mp4'
 import Link from '../Link.astro'
 const isChinese = Astro.url.pathname.startsWith('/zh')
 
-const en = { CompanyName: 'DA CHUAN', CompanySecondary: 'Auto Parts' }
-const zh = { CompanyName: '大川汽配', CompanySecondary: '' }
+const en = { CompanyName: 'DA CHUAN', CompanySecondary: 'Auto Parts', click_href: '/#showcase' }
+const zh = { CompanyName: '大川汽配', CompanySecondary: '', click_href: '/zh/#showcase' }
 const trans = isChinese ? zh : en
 ---
 
@@ -59,8 +59,8 @@ const trans = isChinese ? zh : en
 		</div>
 
 		<div class="container">
-			<Link id="download-link" href="#showcase" class="button">
-				<slot name="download" />
+			<Link id="download-link" href={trans.click_href} class="button">
+				<slot name="button_more" />
 			</Link>
 		</div>
 

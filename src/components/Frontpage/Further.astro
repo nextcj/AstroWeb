@@ -1,18 +1,26 @@
 ---
 import Link from '../Link.astro'
-import { telegram, github, docs } from '../../assets/icons/further'
 const isChinese = Astro.url.pathname.startsWith('/zh')
 const locale = isChinese ? '/zh' : ''
 ---
 
 <div class="container">
+	<div><h2><slot name="title" /></h2></div>
+	<div><h2><slot name="sub_title" /></h2></div>
+
 	<div>
-		<h2>
-			<slot name="title" />
-		</h2>
+		<h3><slot name="docs-title" /></h3>
+		<p><slot name="docs-desc" /></p>
+		<Link href={locale + '/docs/1'} class="button"><slot name="docs-button" /></Link>
 	</div>
 
 	<div>
+		<h3><slot name="repo-title" /></h3>
+		<p><slot name="repo-desc" /></p>
+		<a href={locale + '/docs'} class="button"><slot name="repo-button" /> </a>
+	</div>
+
+	<!-- <div>
 		<h3>
 			<slot name="contact-title" />
 		</h3>
@@ -22,38 +30,11 @@ const locale = isChinese ? '/zh' : ''
 		</p>
 
 		<a href={locale + '/docs/1'} class="button">
-			<!-- <img width="64" src={telegram} class="icon" alt="" /> -->
+			import { telegram, github, docs } from '../../assets/icons/further'
+			<img width="64" src={telegram} class="icon" alt="" />
 			<slot name="contact-button" />
 		</a>
-	</div>
-
-	<div>
-		<h3>
-			<slot name="docs-title" />
-		</h3>
-
-		<p>
-			<slot name="docs-desc" />
-		</p>
-
-		<Link href={locale + '/docs/1'} class="button">
-			<!-- <img width="64" src={docs} class="icon" alt="" /> -->
-			<slot name="docs-button" />
-		</Link>
-	</div>
-
-	<div>
-		<h3>
-			<slot name="repo-title" />
-		</h3>
-		<p>
-			<slot name="repo-desc" />
-		</p>
-		<a href={locale + '/docs'} class="button">
-			<!-- <img width="64" src={github} class="icon" alt="" /> -->
-			<slot name="repo-button" />
-		</a>
-	</div>
+	</div> -->
 </div>
 
 <style>
@@ -78,11 +59,14 @@ const locale = isChinese ? '/zh' : ''
 		display: flex;
 		place-items: center;
 		place-content: center;
-		color: #222;
+		color: #000;
 	}
 
 	.container > div:nth-child(2) {
-		background-color: #2b7ad4;
+		display: flex;
+		place-items: center;
+		place-content: center;
+		color: #000;
 	}
 
 	.container > div:nth-child(3) {
@@ -122,7 +106,15 @@ const locale = isChinese ? '/zh' : ''
 			padding: 0px;
 		}
 
+		.container > div:nth-child(2) {
+			padding: 0px;
+		}
+
 		.container > div:nth-child(1) h2 {
+			margin-bottom: 0px !important;
+		}
+
+		.container > div:nth-child(2) h2 {
 			margin-bottom: 0px !important;
 		}
 	}
