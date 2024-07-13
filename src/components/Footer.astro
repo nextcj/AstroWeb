@@ -4,24 +4,24 @@ import Link from './Link.astro'
 const isChinese = Astro.url.pathname.startsWith('/zh')
 
 const en = {
-	'email':"Email",
-	'WeChat':"WeChat",
-	'IT':"DC IT Department",
-	'Made': 'DA CHUAN ',
+	email: 'Email',
+	WeChat: 'WeChat',
+	IT: 'DC IT Department',
+	Made: 'DA CHUAN ',
 	'Privacy policy': 'Privacy policy',
 	'Source code': 'A Link',
 	'Contact us': 'Contact Our Sales Team',
 	by: 'AUTO INTERIOR SERVICE Co., Ltd.',
 }
 const zh = {
-	'email':"邮箱",
-	'WeChat':"官方微信",
-	'IT':"大川 IT 部",
-	'Made': '大川广州汽车服务有限公司',
+	email: '邮箱',
+	WeChat: '官方微信',
+	IT: '大川 IT 部',
+	Made: '大川广州汽车服务有限公司',
 	'Privacy policy': '隐私条款',
 	'Source code': '备用链接',
 	'Contact us': '联系我们的销售团队',
-	by: '车智杰 & 大川汽配',
+	by: '大川车业 | 大川汽配',
 }
 const trans = isChinese ? zh : en
 ---
@@ -53,8 +53,7 @@ const trans = isChinese ? zh : en
 
 			<p>
 				<span>{trans.by}</span>
-				<span id="signature_span">
-				</span>
+				<span id="signature_span"> </span>
 			</p>
 		</div>
 
