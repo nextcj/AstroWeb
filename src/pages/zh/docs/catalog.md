@@ -1,14 +1,7 @@
 ---
 title: 售后资料分类  After-Sales Docs Catlog
-layout: contribute.astro
+layout: markdown-wrapper.astro
 ---
-
-<br />
-
-|||
-|---|---|
-|223 图文指导|223 视频指导|
-|222 图文指导|222 视频指导|
 
 <br />
 - 大川售后 Web 系统正在开发中，请先查阅上述文档指导
