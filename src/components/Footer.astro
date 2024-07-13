@@ -1,7 +1,7 @@
 ---
 import Link from './Link.astro'
 
-const isFrench = Astro.url.pathname.startsWith('/zh')
+const isChinese = Astro.url.pathname.startsWith('/zh')
 
 const en = {
 	'email':"Email",
@@ -23,7 +23,7 @@ const zh = {
 	'Contact us': '联系我们的销售团队',
 	by: '车智杰 & 大川汽配',
 }
-const trans = isFrench ? zh : en
+const trans = isChinese ? zh : en
 ---
 
 <script>
