@@ -5,8 +5,6 @@ const locale = isChinese ? '/zh' : ''
 ---
 
 <div class="container">
-	<div><h2><slot name="title" /></h2></div>
-	<div><h2><slot name="sub_title" /></h2></div>
 
 	<div>
 		<h3><slot name="docs-title" /></h3>
@@ -19,22 +17,7 @@ const locale = isChinese ? '/zh' : ''
 		<p><slot name="repo-desc" /></p>
 		<a href={locale + '/docs'} class="button"><slot name="repo-button" /> </a>
 	</div>
-
-	<!-- <div>
-		<h3>
-			<slot name="contact-title" />
-		</h3>
-
-		<p>
-			<slot name="contact-desc" />
-		</p>
-
-		<a href={locale + '/docs/1'} class="button">
-			import { telegram, github, docs } from '../../assets/icons/further'
-			<img width="64" src={telegram} class="icon" alt="" />
-			<slot name="contact-button" />
-		</a>
-	</div> -->
+	
 </div>
 
 <style>
@@ -59,14 +42,7 @@ const locale = isChinese ? '/zh' : ''
 		color: white;
 	}
 
-	.container > div:nth-child(1) {
-		display: flex;
-		place-items: center;
-		place-content: center;
-		color: #000;
-	}
-
-	.container > div:nth-child(2) {
+	.container > div:nth-child(4) {
 		display: flex;
 		place-items: center;
 		place-content: center;
@@ -74,10 +50,17 @@ const locale = isChinese ? '/zh' : ''
 	}
 
 	.container > div:nth-child(3) {
+		display: flex;
+		place-items: center;
+		place-content: center;
+		color: #000;
+	}
+
+	.container > div:nth-child(1) {
 		background-color: #127c8d;
 	}
 
-	.container > div:nth-child(4) {
+	.container > div:nth-child(2) {
 		background-color: #333333;
 	}
 
