@@ -23,9 +23,7 @@ if (!title && frontmatter) {
 <Layout title={`${title} · doc`} lang={lang} id='docs'>
 
 	<main>
-		<DocsTitle title={title} thumbnail={thumbnail}>
-		</DocsTitle>
-		
+		<DocsTitle title={title} thumbnail={thumbnail}></DocsTitle>
 		<div class='content'>
 				<slot />
 		</div>
