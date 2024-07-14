@@ -10,7 +10,7 @@ layout: ../../md-astro/markdown-wrapper.astro
 
 - <a href="223/doc/image-screen-circuit">223 娱乐屏插头安装说明</a>
 
-- <a href="223/doc/image-upgrade">223 APP软件升级</a>
+- <a href="223/doc/image-upgrade">223 APP 软件升级</a>
 
 - <a href="223/doc/fix-backup-show">223 解决倒车摄像头不显示</a>
 

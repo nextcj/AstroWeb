@@ -1,9 +1,13 @@
 ---
 import Docs from '../../layouts/Docs.astro'
+const isChinese = Astro.url.pathname.startsWith('/zh')
+const en = { Title: 'Catalog' }
+const zh = { Title: '目录' }
+const trans = isChinese ? zh : en
 ---
 
 <Docs
-	title="目录"
+	title={trans.Title}
 	thumbnail="/documentation/backgrounds/pascal-debrunner-LKOuYT5_dyw-unsplash.jpg"
 >
 <br />
