@@ -5,7 +5,7 @@ const isChinese = Astro.url.pathname.startsWith('/zh')
 const path = Astro.url.pathname
 
 const en = { Home: 'Home', Online: 'ECommerce', Docs: 'After-Sales Sys',DocsRoot:'/docs', Contact: 'Contact Us' }
-const zh = { Home: '主页', Online: '跨境电商', Docs: '售后系统',DocsRoot:'/docs', Contact: '联系我们' }
+const zh = { Home: '主页', Online: '跨境电商', Docs: '售后系统',DocsRoot:'/zh/docs', Contact: '联系我们' }
 const trans = isChinese ? zh : en
 ---
 
