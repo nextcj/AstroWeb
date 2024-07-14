@@ -2,7 +2,7 @@
 layout: ../../markdown-wrapper.astro
 ---
 
-# 倒车摄像头线束
+## 倒车摄像头线束
 
 倒车摄像头只需要接 <font color=#dc2222>三根线</font>，不要接多余的线束。
 
