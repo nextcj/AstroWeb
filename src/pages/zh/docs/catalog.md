@@ -8,7 +8,7 @@ layout: ../../md-astro/markdown-wrapper.astro
 
 - <a href="../223/doc/image-cigerate">223 点烟器改成车载充电器</a>
 
-- <a href="../23/doc/image-screen-circuit">223 娱乐屏插头安装说明</a>
+- <a href="../223/doc/image-screen-circuit">223 娱乐屏插头安装说明</a>
 
 - <a href="../223/doc/image-upgrade">223 APP 软件升级</a>
 
