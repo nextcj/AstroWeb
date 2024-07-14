@@ -4,8 +4,8 @@ import Link from './Link.astro'
 const isChinese = Astro.url.pathname.startsWith('/zh')
 const path = Astro.url.pathname
 
-const en = { Home: 'Home', Online: 'ECommerce', Docs: 'Docs', Contact: 'Contact Us' }
-const zh = { Home: '主页', Online: '跨境电商', Docs: '售后文档', Contact: '联系我们' }
+const en = { Home: 'Home', Online: 'ECommerce', Docs: 'After-Sales Sys',DocsRoot:'/docs', Contact: 'Contact Us' }
+const zh = { Home: '主页', Online: '跨境电商', Docs: '售后系统',DocsRoot:'/docs', Contact: '联系我们' }
 const trans = isChinese ? zh : en
 ---
 
@@ -15,6 +15,7 @@ const trans = isChinese ? zh : en
 			<Link href="/" id="homeLink">{trans.Home}</Link>
 			<Link href="/#open">{trans.Online}</Link>
 			<Link href="/#further">{trans.Contact}</Link>
+			<a href={trans.DocsRoot}>{trans.Docs}</a>
 		</div>
 
 		<a href={isChinese ? path.substring(3) : '/zh' + path} class="language">
@@ -58,6 +59,7 @@ const trans = isChinese ? zh : en
 				<Link href="/" id="homeLink">🏠 {trans.Home}</Link>
 				<Link href="/#open">🌏 {trans.Online}</Link>
 				<Link href="/#further">☎️ {trans.Contact}</Link>
+				<Link href={trans.DocsRoot}>{trans.Docs}</Link>
 			</div>
 
 			<hr />
