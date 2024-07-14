@@ -2,7 +2,7 @@
 layout: ../../../../md-astro/markdown-223-wrapper.astro
 ---
 
-<p style="font-size:25px;">点烟器改成车载充电器</p>
+### # 点烟器改成车载充电器
 
 如下图所示的无线充电板或USB充电器如何接
 

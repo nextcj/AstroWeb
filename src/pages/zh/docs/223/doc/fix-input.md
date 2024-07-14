@@ -2,7 +2,7 @@
 layout: ../../../../md-astro/markdown-223-wrapper.astro
 ---
 
-<p style="font-size:25px;">解决：连接 WIFI 时无法弹出键盘输入</p>
+### # 解决连接WIFI时无法弹出键盘
 
 问题描述：有些刚出厂的屏幕新板，系统出厂设置没有开启 <font color=#dc2222>[屏幕软键盘]</font>，导致部分输入框无法正常弹出输入法键盘
 

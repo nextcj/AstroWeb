@@ -2,7 +2,7 @@
 layout: ../../../../md-astro/markdown-223-wrapper.astro
 ---
 
-<p style="font-size:25px;">娱乐屏插头安装说明</p>
+### # 娱乐屏插头安装说明
 
 下图是各个插头的样子以及对应的用途
 

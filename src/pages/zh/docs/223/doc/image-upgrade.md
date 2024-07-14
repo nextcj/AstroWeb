@@ -2,7 +2,7 @@
 layout: ../../../../md-astro/markdown-223-wrapper.astro
 ---
 
-<p style="font-size:25px;">APP软件升级</p>
+### # APP软件升级
 
 检查是否有新版本可以升级，请按照以下图片步骤进行操作。
 

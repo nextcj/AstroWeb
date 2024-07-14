@@ -2,7 +2,7 @@
 layout: ../../../../md-astro/markdown-223-wrapper.astro
 ---
 
-<p style="font-size:30px;">222屏幕接线</p>
+### # 屏幕接线
 
 ### 一. 检查线束
 
