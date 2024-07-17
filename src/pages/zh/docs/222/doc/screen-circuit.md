@@ -1,5 +1,5 @@
 ---
-layout: ../../../../md-astro/markdown-223-wrapper.astro
+layout: ../../../../md-astro/markdown-222-wrapper.astro
 ---
 
 ### # 屏幕接线
